@@ -1,34 +1,22 @@
-BlueZ - Bluetooth protocol stack for Linux
-******************************************
+The trace-viewer directory contains code from:
 
-Copyright (C) 2000-2002  Maxim Krasnyansky <maxk@qualcomm.com>
-Copyright (C) 2003-2007  Marcel Holtmann <marcel@holtmann.org>
+    http://trace-viewer.googlecode.com/svn/trunk/
 
-Bluetooth packet analyzer
+The file UPSTREAM_REVISION contains the upstream revision number that was last
+pulled.  Changes should be made upstream and then pulled into the trace-viewer
+directory.
 
+The update.py script should be used to pull the latest upstream code, update
+the UPSTREAM_REVISION file, and package the CSS and Javascript files into
+style.css and script.js, respectively.  These generated files are being checked
+into the git repository, and they get embedded in each trace HTML file that
+systrace.py generates.
 
-Compilation and installation
-============================
+To make development of trace-viewer code in the context of systrace easier,
+systrace supports arguments to generate HTML files that link to files in a
+trace-viewer development directory rather than embedding the JS and CSS in the
+HTML.  Do take advantage of this, you should check out the trace-viewer code in
+a new directory (e.g. trace-viewer-dev) and use systrace as follows:
 
-In order to compile Bluetooth analyzer you need following software packages:
-	- Linux Bluetooth protocol stack (BlueZ)
-	- GCC compiler
+    $ ./systrace.py --link-assets --asset-dir trace-viewer-dev
 
-To configure run:
-	./configure --prefix=/usr --mandir=/usr/share/man
- 
-Configure automatically searches for all required components and packages. 
-
-To compile and install run:
-	make && make install
-
-
-Information
-===========
-
-Mailing lists:
-	bluez-users@lists.sf.net - BlueZ general questions and discussions
-	bluez-devel@lists.sf.net - BlueZ development 
-
-For additional information about the project visit BlueZ web site:
-	http://www.bluez.org
